@@ -1,0 +1,29 @@
+{
+  "name": "workflow",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@antv/g6": "^4.7.5",
+    "@element-plus/icons-vue": "^2.0.10",
+    "@vue/runtime-core": "^3.2.45",
+    "axios": "^1.2.0",
+    "element-plus": "^2.2.16",
+    "picocolors": "^1.0.0",
+    "uuid": "^9.0.0",
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.5",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.0.3",
+    "less": "^4.1.3",
+    "less-loader": "^11.0.0",
+    "vite": "^3.0.7"
+  }
+}

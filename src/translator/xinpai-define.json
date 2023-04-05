@@ -1,0 +1,114 @@
+{
+  "name": "",
+  "id": "",
+  "description": "",
+  "form": "",
+
+  "node": [
+    {
+      "type": "发起节点",
+      "name": "",
+      "id": "",
+      "//assignee": "数组，包括用户或者用户组，即数组中最多有两个元素",
+      "assignee": [
+        {
+          "type": "user",
+          "user": ["userID1", "userID2", "..."]
+        },
+        {
+          "type": "group",
+          "group": ["groupID1", "groupID2", "..."]
+        }
+      ],
+      "//permission": "数组，包含若干个 form 表单的权限",
+      "permission": [
+        {"//fieldName": "表单相对应的名称", "//visible": "配置是否可见", "//writable": "配置是否可写"},
+        {"fieldName": "reason","visible": true, "writable": false},
+        {"fieldName": "description","visible": true, "writable": false}
+      ],
+      "next":""
+    },
+    {
+      "type": "审批节点",
+      "//subType": "有会签、单签，表明该节点的类型。审核节点中为会签时，assignee 中不可填写 group 类",
+      "subType":"会签",
+      "name": "",
+      "id": "",
+      "assignee": ["同前文"],
+      "//sequence": "当节点为会签时需要填写，有串行和并行两种",
+      "sequence": "顺序",
+      "//percentage": "会签时可以通过的百分比",
+      "percentage": "80",
+      "//canAdd": "当节点类型为会签时需要填写",
+      "canAdd": false,
+      "permission": ["同前文"],
+      "next":"",
+      "//alternativeNext": "当节点类型为会签时需要填写，有重复、结束",
+      "alternativeNext": "重复"
+    },
+    {
+      "type": "子流程节点",
+      "name": "",
+      "id": "",
+      "//subProcessId": "子流程 id",
+      "subProcessId": "idOfTheSubProcess",
+      "//inParameters": "数组，定义多个父子流程变量的传递关系，这里是父传子的流程",
+      "inParameters": [
+        {"//source": "附流程变量名称", "//target": "子流程变量名称"},
+        {"source": "a","target": "A"}
+      ],
+      "//outParameters": "数组，定义多个父子流程变量的传递关系，这里是子流程传递回来的变量值",
+      "outParameters": [{"source": "b","target": "B"}],
+      "next":"e"
+    },
+    {
+      "type": "分流节点",
+      "name": "",
+      "id": "",
+      "//logic": "分流的逻辑，具体有 inclusive、exclusive，表示并行或者互斥",
+      "logic": "inclusive",
+      "//branches": "不同分支的定义，是一个数组（感觉类似于多叉树的存储），每一条分支的最后一个节点的 next 为空",
+      "branches": [
+        {
+          "//id": "分支 id",
+          "//condition": "分支条件",
+          "//first": "分支的第一个节点 id"
+        },
+        {
+          "id": "",
+          "condition": "",
+          "first": "firstNodeId"
+        }
+      ],
+      "next":""
+    },
+    {
+      "type": "定时器节点",
+      "name": "",
+      "id": "",
+      "//time": "时间配置",
+      "time": 
+        {
+          "//unit": "时间单位",
+          "unit":"day",
+          "//num": "时间间隔时长",
+          "num": 7
+        },
+      "next":""
+    },
+    {
+      "type": "通知节点",
+      "name": "",
+      "id": "",
+      "//notice": "通知的配置",
+      "notice":{
+        "//content": "通知的文字内容",
+        "content": "",
+        "//channel": "通知的方式，数组，可以选择 email、message",
+        "channel": ["email", "message"],
+        "assignee":[]
+      },
+      "next":""
+    }
+  ]
+}
